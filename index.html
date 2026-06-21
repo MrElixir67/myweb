@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MrElixir</title>
+<link rel="icon" type="image/jpeg" href="jempru.jpg">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#0a0a0f;color:#c8c8d0;font-family:'Inter',sans-serif;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+  a{color:#6ee7b7;text-decoration:none}
+  a:hover{color:#34d399}
+  ::-webkit-scrollbar{width:6px}
+  ::-webkit-scrollbar-track{background:#0a0a0f}
+  ::-webkit-scrollbar-thumb{background:#1f2937;border-radius:3px}
+  .container{max-width:1000px;margin:0 auto;padding:40px 24px;flex:1}
+
+  /* glow bg */
+  .glow{position:fixed;top:-40%;left:-20%;width:60%;height:60%;background:radial-gradient(circle,rgba(6,182,212,.03),transparent 70%);pointer-events:none;z-index:-1}
+  .glow2{position:fixed;bottom:-30%;right:-20%;width:50%;height:50%;background:radial-gradient(circle,rgba(110,231,183,.03),transparent 70%);pointer-events:none;z-index:-1}
+
+  /* header */
+  header{text-align:center;padding:60px 0 40px}
+  .avatar{width:88px;height:88px;border-radius:50%;margin:0 auto 20px;overflow:hidden;border:2px solid #1f1f28;box-shadow:0 0 30px rgba(110,231,183,.1)}
+  .avatar img{width:100%;height:100%;object-fit:cover}
+  header h1{font-size:28px;font-weight:800;color:#fff;letter-spacing:-.5px}
+  header h1 .hl{color:#6ee7b7}
+  header .sub{color:#6b7280;font-size:14px;margin-top:6px}
+  header .tagline{color:#9ca3af;font-size:14px;margin-top:10px}
+  header .quote{color:#6b7280;font-size:13px;font-style:italic;margin-top:8px}
+  .badges{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+  .badge{background:#18181b;border:1px solid #27272a;border-radius:20px;padding:4px 14px;font-size:12px;font-family:'JetBrains Mono',monospace;color:#a1a1aa}
+
+  /* sections */
+  section{margin-bottom:36px}
+  section h2{font-size:15px;font-weight:700;color:#fff;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #1f1f28;text-transform:uppercase;letter-spacing:.8px}
+  section h2 .sec-num{color:#6b7280;font-weight:400;margin-right:8px}
+
+  /* about */
+  .about-text{color:#9ca3af;font-size:14px;line-height:1.7;margin-bottom:16px}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:540px){.about-grid{grid-template-columns:1fr}}
+  .stat{background:#111116;border:1px solid #1f1f28;border-radius:8px;padding:12px}
+  .stat-label{color:#52525b;font-size:10px;text-transform:uppercase;letter-spacing:.5px;font-family:'JetBrains Mono',monospace}
+  .stat-value{color:#d4d4d8;font-size:14px;font-weight:500;margin-top:2px}
+  .stat-desc{color:#6b7280;font-size:12px;margin-top:4px;line-height:1.5}
+
+  /* project */
+  .project{background:#111116;border:1px solid #1f1f28;border-radius:12px;padding:20px;margin-bottom:16px;transition:border-color .2s}
+  .project:hover{border-color:#2a2a35}
+  .project-head{display:flex;align-items:flex-start;gap:14px}
+  .project-icon{flex-shrink:0;width:36px;height:36px;background:#18181b;border:1px solid #27272a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#6ee7b7}
+  .project-body{flex:1;min-width:0}
+  .project-title{font-weight:600;color:#fff;font-size:14px;display:flex;align-items:center;flex-wrap:wrap;gap:6px}
+  .project-title a{color:#fff}
+  .project-title a:hover{color:#6ee7b7}
+  .project-title .domain{color:#6b7280;font-weight:400;font-size:11px;font-family:'JetBrains Mono',monospace}
+  .project-desc{color:#9ca3af;font-size:13px;margin-top:6px;line-height:1.7}
+  .project-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .project-tag{background:#18181b;border:1px solid #27272a;border-radius:4px;padding:2px 8px;font-size:11px;font-family:'JetBrains Mono',monospace;color:#52525b}
+  .project-tag.accent{color:#6ee7b7;border-color:#1a3a2a}
+
+  /* principles */
+  .principles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media(max-width:540px){.principles{grid-template-columns:1fr}}
+  .principle{background:#111116;border:1px solid #1f1f28;border-radius:8px;padding:14px}
+  .principle-title{font-size:13px;font-weight:600;color:#d4d4d8}
+  .principle-desc{color:#6b7280;font-size:12px;margin-top:4px;line-height:1.5}
+
+  /* links */
+  .links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:24px}
+  .link-btn{display:inline-flex;align-items:center;gap:6px;background:#18181b;border:1px solid #27272a;border-radius:8px;padding:8px 16px;font-size:13px;color:#d4d4d8;transition:all .2s;font-family:'JetBrains Mono',monospace}
+  .link-btn:hover{background:#1f1f28;border-color:#6ee7b7;color:#6ee7b7}
+
+  /* footer */
+  footer{text-align:center;padding:24px 0;color:#27272a;font-size:11px;border-top:1px solid #18181b;font-family:'JetBrains Mono',monospace;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="glow2"></div>
+
+<div class="container">
+
+  <header>
+    <div class="avatar"><img src="jempru.jpg" alt="mrelixir"></div>
+    <h1>MrElixir<span class="hl">.</span></h1>
+    <div class="sub"><a href="https://github.com/MrElixir1945">@MrElixir1945</a></div>
+    <div class="tagline">Builder &middot; Vibecoder &middot; Homelab Enjoyer</div>
+    <div class="quote">&ldquo;Do not regret what you have done.&rdquo; &mdash; Miyamoto Musashi</div>
+    <div class="badges">
+      <span class="badge">Python</span>
+      <span class="badge">JavaScript</span>
+      <span class="badge">Proxmox</span>
+      <span class="badge">ML</span>
+      <span class="badge">CyberSec</span>
+    </div>
+  </header>
+
+  <!-- 01 About -->
+  <section>
+    <h2><span class="sec-num">01</span> About</h2>
+    <div class="about-text">
+      Builder dan vibecoder yang membangun tools automasi, menjalankan homelab sendiri, dan bereksperimen dengan AI. Pendekatan saya sederhana — AI sebagai alat, saya sebagai arsitek. Tertarik di bidang Machine Learning dan Cybersecurity. Masih belajar, tapi tidak berhenti membangun.
+    </div>
+    <div class="about-grid">
+      <div class="stat">
+        <div class="stat-label">Stack</div>
+        <div class="stat-value">Python &middot; JS &middot; Bash</div>
+        <div class="stat-desc">HTML/CSS, Next.js untuk frontend</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Infrastructure</div>
+        <div class="stat-value">Proxmox VE</div>
+        <div class="stat-desc">Self-hosted homelab dari PC bekas</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Environment</div>
+        <div class="stat-value">Windows + Linux</div>
+        <div class="stat-desc">Debian, Ubuntu, Kali di server</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Focus</div>
+        <div class="stat-value">ML &middot; Cybersecurity</div>
+        <div class="stat-desc">Bidang yang lagi serius didalami</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 Projects -->
+  <section>
+    <h2><span class="sec-num">02</span> Projects</h2>
+
+    <div class="project">
+      <div class="project-head">
+        <div class="project-icon">&#9670;</div>
+        <div class="project-body">
+          <div class="project-title">
+            PEMALI
+            <span class="domain"><a href="https://pemali.site" target="_blank">pemali.site &rarr;</a></span>
+          </div>
+          <div class="project-desc">Platform pelaporan kerusakan infrastruktur menggunakan computer vision. Dirancang untuk mendeteksi dan mendokumentasikan kondisi infrastruktur secara otomatis.</div>
+          <div class="project-tags">
+            <span class="project-tag accent">Computer Vision</span>
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Infrastructure</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <div class="project-icon">&#9670;</div>
+        <div class="project-body">
+          <div class="project-title">
+            BEBEK
+            <span class="domain"><a href="https://bebek.elixia.my.id" target="_blank">bebek.elixia.my.id &rarr;</a></span>
+          </div>
+          <div class="project-desc">Tool cybersecurity untuk meringkus kejahatan judi online. Basmi Ekosistem Bandar Elektronik Kriminal.</div>
+          <div class="project-tags">
+            <span class="project-tag accent">Cybersecurity</span>
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Automation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-head">
+        <div class="project-icon">&#9670;</div>
+        <div class="project-body">
+          <div class="project-title">
+            TuwagaBaliTrip
+            <span class="domain"><a href="https://tuwagabalitrip.com" target="_blank">tuwagabalitrip.com &rarr;</a></span>
+          </div>
+          <div class="project-desc">Website untuk bisnis tour guide lokal di Bali. Menyediakan private full-day tours ke air terjun, sawah terasering, dan sunrise — bersama Putu, guide lokal asli Bali. Rating 4.9 dari 100+ ulasan.</div>
+          <div class="project-tags">
+            <span class="project-tag accent">Web</span>
+            <span class="project-tag">Astro v2</span>
+            <span class="project-tag">Self-hosted</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="links" style="margin-top:4px">
+      <a class="link-btn" href="https://github.com/MrElixir1945" target="_blank">See more on GitHub &rarr;</a>
+    </div>
+  </section>
+
+  <!-- 03 Principles -->
+  <section>
+    <h2><span class="sec-num">03</span> Principles</h2>
+    <div class="principles">
+      <div class="principle">
+        <div class="principle-title">Practical &gt; Grinding</div>
+        <div class="principle-desc">Kalau tidak ada gunanya, skip. Tidak ada badge farming atau aktivitas yang tidak bermakna.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-title">AI-Augmented</div>
+        <div class="principle-desc">AI sebagai alat, bukan pengganti. Saya yang menentukan arah — AI yang mengeksekusi.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-title">Learn by Breaking</div>
+        <div class="principle-desc">Error adalah dokumentasi paling jujur. Coba, gagal, debug, selesai.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-title">Privacy First</div>
+        <div class="principle-desc">Self-host lebih baik dari cloud orang lain. Data tetap di tangan sendiri.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Links -->
+  <div class="links">
+    <a class="link-btn" href="https://github.com/MrElixir1945" target="_blank" aria-label="GitHub">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      GitHub
+    </a>
+    <a class="link-btn" href="https://www.reddit.com/user/Mrelixir77777/" target="_blank" aria-label="Reddit">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
+      Reddit
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div>mrelixir &middot; elixia.my.id</div>
+</footer>
+</body>
+</html>
