@@ -74,4 +74,55 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Cert Auto-scroll
+  const certScroll = document.querySelector(".cert-scroll");
+  if (certScroll) {
+    let autoScrollInterval;
+    let userInteracting = false;
+
+    function startAutoScroll() {
+      autoScrollInterval = setInterval(() => {
+        if (!userInteracting) {
+          certScroll.scrollTop += 1;
+          if (certScroll.scrollTop >= certScroll.scrollHeight - certScroll.clientHeight) {
+            certScroll.scrollTop = 0;
+          }
+        }
+      }, 50);
+    }
+
+    function stopAutoScroll() {
+      clearInterval(autoScrollInterval);
+    }
+
+    certScroll.addEventListener("mouseenter", () => {
+      userInteracting = true;
+    });
+
+    certScroll.addEventListener("mouseleave", () => {
+      userInteracting = false;
+    });
+
+    certScroll.addEventListener("wheel", () => {
+      userInteracting = true;
+      clearTimeout(certScroll._resumeTimer);
+      certScroll._resumeTimer = setTimeout(() => {
+        userInteracting = false;
+      }, 2000);
+    }, { passive: true });
+
+    certScroll.addEventListener("touchstart", () => {
+      userInteracting = true;
+      clearTimeout(certScroll._resumeTimer);
+    }, { passive: true });
+
+    certScroll.addEventListener("touchend", () => {
+      certScroll._resumeTimer = setTimeout(() => {
+        userInteracting = false;
+      }, 2000);
+    }, { passive: true });
+
+    startAutoScroll();
+  }
+
 });
