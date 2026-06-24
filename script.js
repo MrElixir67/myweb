@@ -130,6 +130,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
 
     startAutoScroll();
+
+    // Click cert card in main view → open single modal
+    const mainCertCards = certScroll.querySelectorAll(".cert-card");
+    mainCertCards.forEach(card => {
+      card.style.cursor = "pointer";
+      card.addEventListener("click", () => openSingleModal(card));
+    });
   }
 
 });
