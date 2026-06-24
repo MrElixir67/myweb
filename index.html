@@ -15,95 +15,108 @@
   ::-webkit-scrollbar{width:6px}
   ::-webkit-scrollbar-track{background:#0a0a0f}
   ::-webkit-scrollbar-thumb{background:#1f2937;border-radius:3px}
+  ::selection{background:#6ee7b733;color:#fff}
 
   /* glow */
-  .glow{position:fixed;top:-40%;left:-20%;width:60%;height:60%;background:radial-gradient(circle,rgba(6,182,212,.03),transparent 70%);pointer-events:none;z-index:-1}
+  .glow{position:fixed;top:-40%;left:250px;width:60%;height:60%;background:radial-gradient(circle,rgba(6,182,212,.03),transparent 70%);pointer-events:none;z-index:-1}
   .glow2{position:fixed;bottom:-30%;right:-20%;width:50%;height:50%;background:radial-gradient(circle,rgba(110,231,183,.03),transparent 70%);pointer-events:none;z-index:-1}
 
   /* sidebar */
-  .sidebar{position:fixed;top:0;left:0;width:250px;height:100vh;padding:48px 32px;display:flex;flex-direction:column;z-index:10;border-right:1px solid #111116}
-  .sidebar-avatar{width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid #1f1f28;margin-bottom:14px;flex-shrink:0}
+  .sidebar{position:fixed;top:0;left:0;width:280px;height:100vh;padding:60px 40px;display:flex;flex-direction:column;z-index:10;border-right:1px solid #111116}
+  .sidebar-avatar{width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid #1f1f28;margin-bottom:16px;flex-shrink:0}
   .sidebar-avatar img{width:100%;height:100%;object-fit:cover}
-  .sidebar-name{font-size:20px;font-weight:700;color:#fff;letter-spacing:-.3px}
+  .sidebar-name{font-size:22px;font-weight:700;color:#fff;letter-spacing:-.3px}
   .sidebar-name .hl{color:#6ee7b7}
-  .sidebar-tagline{color:#52525b;font-size:12px;margin-top:4px;font-family:'JetBrains Mono',monospace}
-  .sidebar-nav{margin-top:40px;display:flex;flex-direction:column;gap:6px}
-  .sidebar-nav a{color:#52525b;font-size:13px;font-weight:500;padding:8px 12px;border-radius:6px;transition:all .2s;display:flex;align-items:center;gap:10px}
-  .sidebar-nav a:hover{color:#d4d4d8;background:#111116}
+  .sidebar-tagline{color:#52525b;font-size:12px;margin-top:4px;font-family:'JetBrains Mono',monospace;line-height:1.5}
+  .sidebar-nav{margin-top:48px;display:flex;flex-direction:column;gap:4px}
+  .sidebar-nav a{color:#52525b;font-size:13px;font-weight:500;padding:8px 12px;border-radius:6px;transition:all .2s;display:flex;align-items:center;gap:10px;border-left:2px solid transparent}
+  .sidebar-nav a:hover{color:#d4d4d8}
+  .sidebar-nav a.active{color:#d4d4d8;border-left-color:#6ee7b7;background:linear-gradient(90deg,#6ee7b708,transparent)}
   .sidebar-nav a .nav-num{color:#6ee7b7;font-family:'JetBrains Mono',monospace;font-size:11px;width:20px;flex-shrink:0}
-  .sidebar-bottom{margin-top:auto;display:flex;gap:12px;padding-top:20px;border-top:1px solid #111116}
+  .sidebar-bottom{margin-top:auto;display:flex;gap:14px;padding-top:24px;border-top:1px solid #111116}
   .sidebar-bottom a{color:#52525b;transition:color .2s;display:flex}
   .sidebar-bottom a:hover{color:#6ee7b7}
 
   /* main */
-  .main{margin-left:250px;max-width:800px;padding:80px 48px;min-height:100vh;display:flex;flex-direction:column}
+  .main{margin-left:280px;padding:100px 80px;min-height:100vh;display:flex;flex-direction:column}
+  .main-inner{max-width:780px;width:100%}
 
   /* section */
-  section{margin-bottom:80px;scroll-margin-top:40px}
-  section:last-of-type{margin-bottom:48px}
-  section h2{font-size:14px;font-weight:700;color:#fff;margin-bottom:24px;padding-bottom:10px;border-bottom:1px solid #1f1f28;text-transform:uppercase;letter-spacing:.8px;display:flex;align-items:center;gap:10px}
-  section h2 .sec-num{color:#6ee7b7;font-weight:400;font-family:'JetBrains Mono',monospace;font-size:12px}
+  section{margin-bottom:100px;scroll-margin-top:40px}
+  section:last-of-type{margin-bottom:60px}
+  section h2{font-size:28px;font-weight:700;color:#fff;margin-bottom:40px;letter-spacing:-.3px}
+  section h2 .sec-num{color:#6ee7b7;font-family:'JetBrains Mono',monospace;font-size:16px;font-weight:400;margin-right:12px;vertical-align:middle}
+  section h2::after{content:"";display:inline-block;width:200px;height:1px;background:#1f1f28;margin-left:16px;vertical-align:middle}
 
   /* about */
-  .about-text{color:#9ca3af;font-size:14px;line-height:1.8;margin-bottom:24px}
+  .about-text{color:#9ca3af;font-size:15px;line-height:1.8;margin-bottom:40px}
   .about-text strong{color:#d4d4d8;font-weight:600}
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   @media(max-width:640px){.about-grid{grid-template-columns:1fr}}
-  .stat{background:#111116;border:1px solid #1f1f28;border-radius:10px;padding:14px}
+  .stat{background:#111116;border:1px solid #1f1f28;border-radius:8px;padding:16px;transition:border-color .2s}
+  .stat:hover{border-color:#2a2a35}
   .stat-label{color:#52525b;font-size:10px;text-transform:uppercase;letter-spacing:.5px;font-family:'JetBrains Mono',monospace}
-  .stat-value{color:#d4d4d8;font-size:14px;font-weight:500;margin-top:3px}
-  .stat-desc{color:#6b7280;font-size:12px;margin-top:3px;line-height:1.5}
+  .stat-value{color:#d4d4d8;font-size:14px;font-weight:500;margin-top:4px}
+  .stat-desc{color:#6b7280;font-size:12px;margin-top:2px;line-height:1.5}
 
   /* certificates */
-  .cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .cert-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  @media(max-width:900px){.cert-grid{grid-template-columns:1fr 1fr}}
   @media(max-width:640px){.cert-grid{grid-template-columns:1fr}}
-  .cert-card{background:linear-gradient(135deg,#111116,#18181b);border:1px solid #1f1f28;border-radius:12px;overflow:hidden;transition:border-color .2s}
+  .cert-card{background:linear-gradient(135deg,#111116,#18181b);border:1px solid #1f1f28;border-radius:10px;overflow:hidden;transition:border-color .2s;cursor:pointer}
   .cert-card:hover{border-color:#2a2a35}
-  .cert-banner{height:100px;display:flex;align-items:center;justify-content:center;font-size:32px;background:linear-gradient(135deg,#0d1a15,#111f28)}
-  .cert-body{padding:16px}
+  .cert-banner{height:120px;display:flex;align-items:center;justify-content:center;font-size:36px;background:linear-gradient(135deg,#0d1a15,#0e1620);position:relative;overflow:hidden}
+  .cert-banner::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,rgba(110,231,183,.05),transparent 70%)}
+  .cert-body{padding:14px}
   .cert-title{font-size:13px;font-weight:600;color:#fff}
-  .cert-issuer{color:#6b7280;font-size:11px;margin-top:4px;font-family:'JetBrains Mono',monospace}
-  .cert-placeholder{color:#52525b;font-size:11px;margin-top:6px;border-top:1px solid #1f1f28;padding-top:6px}
+  .cert-issuer{color:#6b7280;font-size:11px;margin-top:3px;font-family:'JetBrains Mono',monospace}
+  .cert-note{color:#52525b;font-size:10px;margin-top:6px;border-top:1px solid #1f1f28;padding-top:6px;font-style:italic}
 
   /* projects */
-  .project{background:#111116;border:1px solid #1f1f28;border-radius:12px;padding:20px;margin-bottom:16px;transition:border-color .2s}
+  .project{background:#111116;border:1px solid #1f1f28;border-radius:10px;padding:24px;margin-bottom:16px;transition:border-color .2s}
   .project:hover{border-color:#2a2a35}
-  .project-head{display:flex;align-items:flex-start;gap:14px}
-  .project-icon{flex-shrink:0;width:36px;height:36px;background:#18181b;border:1px solid #27272a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;color:#6ee7b7}
+  .project-head{display:flex;align-items:flex-start;gap:16px}
+  .project-icon{flex-shrink:0;width:40px;height:40px;background:#18181b;border:1px solid #27272a;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#6ee7b7}
   .project-body{flex:1;min-width:0}
-  .project-title{font-weight:600;color:#fff;font-size:14px;display:flex;align-items:center;flex-wrap:wrap;gap:6px}
-  .project-title .domain{color:#6b7280;font-weight:400;font-size:11px;font-family:'JetBrains Mono',monospace}
+  .project-title{font-weight:600;color:#fff;font-size:15px;display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+  .project-title .domain{color:#6b7280;font-weight:400;font-size:12px;font-family:'JetBrains Mono',monospace}
   .project-desc{color:#9ca3af;font-size:13px;margin-top:6px;line-height:1.7}
   .project-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-  .project-tag{background:#18181b;border:1px solid #27272a;border-radius:4px;padding:2px 8px;font-size:11px;font-family:'JetBrains Mono',monospace;color:#52525b}
+  .project-tag{background:#18181b;border:1px solid #27272a;border-radius:4px;padding:2px 10px;font-size:11px;font-family:'JetBrains Mono',monospace;color:#52525b}
   .project-tag.accent{color:#6ee7b7;border-color:#1a3a2a}
 
   /* principles */
-  .prin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .prin-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   @media(max-width:640px){.prin-grid{grid-template-columns:1fr}}
-  .prin-card{background:#111116;border:1px solid #1f1f28;border-radius:10px;padding:16px;transition:border-color .2s}
+  .prin-card{background:#111116;border:1px solid #1f1f28;border-radius:8px;padding:20px;transition:border-color .2s}
   .prin-card:hover{border-color:#2a2a35}
-  .prin-title{font-size:13px;font-weight:600;color:#d4d4d8;display:flex;align-items:center;gap:8px}
-  .prin-title .prin-icon{color:#6ee7b7;font-size:16px}
+  .prin-title{font-size:14px;font-weight:600;color:#d4d4d8;display:flex;align-items:center;gap:8px}
+  .prin-icon{color:#6ee7b7;font-size:16px;width:20px;text-align:center}
   .prin-desc{color:#6b7280;font-size:12px;margin-top:6px;line-height:1.6}
 
-  /* button */
-  .btn-row{display:flex;gap:10px;margin-top:4px}
-  .btn{display:inline-flex;align-items:center;gap:6px;background:#18181b;border:1px solid #27272a;border-radius:8px;padding:8px 16px;font-size:13px;color:#d4d4d8;transition:all .2s;font-family:'JetBrains Mono',monospace}
+  /* btn */
+  .btn-row{display:flex;gap:10px;margin-top:8px}
+  .btn{display:inline-flex;align-items:center;gap:6px;background:#18181b;border:1px solid #27272a;border-radius:8px;padding:10px 20px;font-size:13px;color:#d4d4d8;transition:all .2s;font-family:'JetBrains Mono',monospace}
   .btn:hover{background:#1f1f28;border-color:#6ee7b7;color:#6ee7b7}
 
   /* footer */
-  footer{padding:24px 0 0;margin-top:auto;color:#27272a;font-size:11px;border-top:1px solid #18181b;font-family:'JetBrains Mono',monospace}
+  footer{padding:32px 0 0;margin-top:auto;color:#27272a;font-size:11px;border-top:1px solid #18181b;font-family:'JetBrains Mono',monospace}
 
-  /* responsive */
+  /* mobile */
   @media(max-width:768px){
     .sidebar{display:none}
-    .main{margin-left:0;padding:40px 20px}
+    .main{margin-left:0;padding:60px 24px}
+    .main-inner{max-width:100%}
+    section h2{font-size:22px}
+    section h2::after{width:80px}
+    .cert-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:480px){
     .cert-grid{grid-template-columns:1fr}
   }
-  .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:#0a0a0f;border-top:1px solid #111116;padding:10px 16px;z-index:20;justify-content:space-around}
-  .mobile-nav a{color:#52525b;font-size:11px;font-family:'JetBrains Mono',monospace;display:flex;flex-direction:column;align-items:center;gap:2px}
-  .mobile-nav a .mn-num{color:#6ee7b7;font-size:10px}
+  .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:#0a0a0f;border-top:1px solid #111116;padding:10px 16px;z-index:20;justify-content:space-around;backdrop-filter:blur(10px)}
+  .mobile-nav a{color:#52525b;font-size:10px;font-family:'JetBrains Mono',monospace;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px 8px;border-radius:4px}
+  .mobile-nav a .mn-num{color:#6ee7b7;font-size:9px}
   @media(max-width:768px){.mobile-nav{display:flex}}
 </style>
 </head>
@@ -115,7 +128,7 @@
 <aside class="sidebar">
   <div class="sidebar-avatar"><img src="jempru.jpg" alt="MrElixir"></div>
   <div class="sidebar-name">MrElixir<span class="hl">.</span></div>
-  <div class="sidebar-tagline">Builder &middot; Vibecoder &middot; Homelab Enjoyer</div>
+  <div class="sidebar-tagline">Builder · Vibecoder · Homelab Enjoyer</div>
   <nav class="sidebar-nav">
     <a href="#about"><span class="nav-num">01</span> About</a>
     <a href="#certificates"><span class="nav-num">02</span> Certificates</a>
@@ -123,7 +136,7 @@
     <a href="#principles"><span class="nav-num">04</span> Principles</a>
   </nav>
   <div class="sidebar-bottom">
-    <a href="https://github.com/MrElixir1945" target="_blank" aria-label="GitHub">
+    <a href="https://github.com/MrElixir67" target="_blank" aria-label="GitHub">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
     </a>
     <a href="https://www.reddit.com/user/Mrelixir77777/" target="_blank" aria-label="Reddit">
@@ -134,17 +147,18 @@
 
 <!-- Main -->
 <main class="main">
+<div class="main-inner">
 
   <!-- 01 About -->
   <section id="about">
-    <h2><span class="sec-num">01.</span> About</h2>
+    <h2><span class="sec-num">01.</span>About</h2>
     <div class="about-text">
       Builder dan vibecoder yang membangun tools automasi, menjalankan homelab sendiri, dan bereksperimen dengan AI. Pendekatan saya sederhana &mdash; AI sebagai alat, saya sebagai arsitek. Tertarik di bidang <strong>Machine Learning</strong> dan <strong>Cybersecurity</strong>. Masih belajar, tapi tidak berhenti membangun.
     </div>
     <div class="about-grid">
       <div class="stat">
         <div class="stat-label">Stack</div>
-        <div class="stat-value">Python &middot; JS &middot; Bash</div>
+        <div class="stat-value">Python · JS · Bash</div>
         <div class="stat-desc">HTML/CSS, Next.js untuk frontend</div>
       </div>
       <div class="stat">
@@ -159,7 +173,7 @@
       </div>
       <div class="stat">
         <div class="stat-label">Focus</div>
-        <div class="stat-value">ML &middot; Cybersecurity</div>
+        <div class="stat-value">ML · Cybersecurity</div>
         <div class="stat-desc">Bidang yang lagi serius didalami</div>
       </div>
     </div>
@@ -167,15 +181,15 @@
 
   <!-- 02 Certificates -->
   <section id="certificates">
-    <h2><span class="sec-num">02.</span> Certificates</h2>
+    <h2><span class="sec-num">02.</span>Certificates</h2>
     <div class="cert-grid">
 
       <div class="cert-card">
         <div class="cert-banner">&#9733;</div>
         <div class="cert-body">
           <div class="cert-title">Certificate Title</div>
-          <div class="cert-issuer">Organizer &middot; 2025</div>
-          <div class="cert-placeholder">&#9654; Replace with your scanned certificate</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
         </div>
       </div>
 
@@ -183,8 +197,8 @@
         <div class="cert-banner">&#9733;</div>
         <div class="cert-body">
           <div class="cert-title">Certificate Title</div>
-          <div class="cert-issuer">Organizer &middot; 2025</div>
-          <div class="cert-placeholder">&#9654; Replace with your scanned certificate</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
         </div>
       </div>
 
@@ -192,8 +206,8 @@
         <div class="cert-banner">&#9733;</div>
         <div class="cert-body">
           <div class="cert-title">Certificate Title</div>
-          <div class="cert-issuer">Organizer &middot; 2025</div>
-          <div class="cert-placeholder">&#9654; Replace with your scanned certificate</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
         </div>
       </div>
 
@@ -201,8 +215,152 @@
         <div class="cert-banner">&#9733;</div>
         <div class="cert-body">
           <div class="cert-title">Certificate Title</div>
-          <div class="cert-issuer">Organizer &middot; 2025</div>
-          <div class="cert-placeholder">&#9654; Replace with your scanned certificate</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-banner">&#9733;</div>
+        <div class="cert-body">
+          <div class="cert-title">Certificate Title</div>
+          <div class="cert-issuer">Organizer · 2025</div>
+          <div class="cert-note">Replace with your cert</div>
         </div>
       </div>
 
@@ -211,7 +369,7 @@
 
   <!-- 03 Projects -->
   <section id="projects">
-    <h2><span class="sec-num">03.</span> Projects</h2>
+    <h2><span class="sec-num">03.</span>Projects</h2>
 
     <div class="project">
       <div class="project-head">
@@ -268,13 +426,13 @@
     </div>
 
     <div class="btn-row">
-      <a class="btn" href="https://github.com/MrElixir1945" target="_blank">See more on GitHub &rarr;</a>
+      <a class="btn" href="https://github.com/MrElixir67" target="_blank">See more on GitHub &rarr;</a>
     </div>
   </section>
 
   <!-- 04 Principles -->
   <section id="principles">
-    <h2><span class="sec-num">04.</span> Principles</h2>
+    <h2><span class="sec-num">04.</span>Principles</h2>
     <div class="prin-grid">
       <div class="prin-card">
         <div class="prin-title"><span class="prin-icon">&#9889;</span> Practical &gt; Grinding</div>
@@ -296,9 +454,10 @@
   </section>
 
   <footer>
-    <div>mrelixir &middot; elixia.my.id</div>
+    <div>mrelixir · elixia.my.id</div>
   </footer>
 
+</div>
 </main>
 
 <!-- Mobile bottom nav -->
